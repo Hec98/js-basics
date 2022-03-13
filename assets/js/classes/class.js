@@ -1,4 +1,15 @@
 class Person {
+    static _counting = 0;
+    static get counting() {
+        return `${Person._counting} instances`  
+    }
+
+    // static message = () => {
+    static message() {
+        // console.log(this.name);
+        console.log(`Hello everyone I am a static method`);
+    }
+
     name = '';
     code = ''; 
     sentence = '';
@@ -8,6 +19,8 @@ class Person {
         this.name = name;
         this.code = code;
         this.sentence = sentence;
+
+        Person._counting++;
     }
 
     /**
@@ -33,6 +46,8 @@ class Person {
 
 const spiderman = new Person('Peter Parker', 'Spiderman', `I'm your friendly neighbor Spiderman`);
 const ironman = new Person('Tony Stark', 'Ironman', `I am Iron Man`);
+
+
 console.log(spiderman);
 console.log(ironman);
 
@@ -45,3 +60,10 @@ spiderman.setFavoriteFood = `Aunt May's Cherry Pie`;
 console.log(spiderman);
 console.log(spiderman.getFavoriteFood);
 
+//Person._counting = 2;
+console.log(`Static count: ${Person._counting}`)
+console.log(Person.counting)
+
+Person.message();
+Person.externalProperty = 'external property';
+console.log(Person)
